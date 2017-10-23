@@ -10,6 +10,23 @@
         <title>Cadastro Cliente</title>
     </head>
     <body>  
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="nav nav-tabs">
+                        <li role="presentation" class="active"><a href="home.jsp">Home</a></li>
+                        <li role="presentation"><a href="ajaxCidades.html">Cidades</a></li>
+                        <li role="presentation"><a href="helloWorld.jsp">Testes</a></li>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="cadastroCliente.jsp">Cadastrar Cliente</a></li>
+                                <li><a href="index.jsp">Logout</a></li>
+                            </ul>
+                     </ul>
+                </div>
+            </div>
+        </div>        
+        
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -18,11 +35,17 @@
                     </div>
                     <div class="col-xs-12">
                         <form action="show">
-                            <b>Nome:</b> <input type="text" id="nameInput" name="nameInput"> <br/>
-                            <b>Id</b>: <input type="text" id="idInput" name="idInput"> <br/>
-                            <b>Data de Nascimento:</b> <input type="date" id="dtNascInput" name="dtNascInput"> <br/>
-                            <b>Email:</b> <input type="email" id="loginInput" name="loginInput"> <br/>
-                            <b>Senha:</b> <input type="password" id="pswrdSenha" name="pswrdSenha"> <br/>                           
+                            <b>Nome:</b> 
+                            <input  class="form-control" type="text" id="nameInput" name="nameInput">
+                            <b>Id</b>: 
+                            <input  class="form-control" type="text" id="idInput" name="idInput">
+                            <b>Data de Nascimento:</b> 
+                            <input  class="form-control" type="date" id="dtNascInput" name="dtNascInput">
+                            <b>Email:</b> 
+                            <input  class="form-control" type="email" id="loginInput" name="loginInput">
+                            <b>Senha:</b> 
+                            <input class="form-control" type="password" id="pswrdSenha" name="pswrdSenha">  
+                            
                             <button type="reset" class="btn btn-default">Resetar</button>
                             <button type="submit" class="btn btn-primary">Enviar</button>
                         </form>
