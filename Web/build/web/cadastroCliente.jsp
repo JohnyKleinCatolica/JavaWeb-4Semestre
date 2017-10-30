@@ -20,7 +20,7 @@
                         <li role="presentation"><a href="helloWorld.jsp">Testes</a></li>
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="cadastroCliente.jsp">Cadastrar Cliente</a></li>
-                                <li><a href="index.jsp">Logout</a></li>
+                                <li><a href="login.jsp">Logout</a></li>
                             </ul>
                      </ul>
                 </div>

@@ -27,7 +27,7 @@
                         <li role="presentation"><a href="helloWorld.jsp">Testes</a></li>
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="cadastroCliente.jsp">Cadastrar Cliente</a></li>
-                                <li><a href="index.jsp">Logout</a></li>
+                                <li><a href="login.jsp">Logout</a></li>
                             </ul>
                      </ul>
                 </div>
@@ -82,7 +82,9 @@
         
          <% out.println(this.metodo()); %>
 
-        Cliente<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        Cliente
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     </body>
