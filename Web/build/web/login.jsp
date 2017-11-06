@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+|<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,10 +16,6 @@
                         <li role="presentation"><a href="home.jsp">Home</a></li>
                         <li role="presentation"><a href="ajaxCidades.html">Cidades</a></li>
                         <li role="presentation"><a href="helloWorld.jsp">Testes</a></li>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="cadastroCliente.jsp">Cadastrar Cliente</a></li>
-                                <li><a href="login.jsp">Logout</a></li>
-                            </ul>
                      </ul>
                 </div>
             </div>
@@ -40,8 +36,11 @@
                             
                             <button type="submit" class="btn btn-primary">Enviar</button>
                         </form>
-                    </div>
+                    </div>     
                 </div>
+                <div class="col-xs-12">
+                     Não possui uma conta? Crie seu <a href="cadastroCliente.jsp">cadastro</a>.
+                </div>                  
             </div>
         </div>        
         

@@ -9,23 +9,7 @@
         <link rel="stylesheet" href="assets/styles/style.css">
         <title>Cadastro Cliente</title>
     </head>
-    <body>  
-        
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <ul class="nav nav-tabs">
-                        <li role="presentation" class="active"><a href="home.jsp">Home</a></li>
-                        <li role="presentation"><a href="ajaxCidades.html">Cidades</a></li>
-                        <li role="presentation"><a href="helloWorld.jsp">Testes</a></li>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="cadastroCliente.jsp">Cadastrar Cliente</a></li>
-                                <li><a href="login.jsp">Logout</a></li>
-                            </ul>
-                     </ul>
-                </div>
-            </div>
-        </div>        
+    <body>         
         
         <div class="container">
             <div class="row">

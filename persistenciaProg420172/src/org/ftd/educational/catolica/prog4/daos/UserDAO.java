@@ -28,7 +28,7 @@ public class UserDAO extends UserJpaController {
             .getSingleResult();
         } finally {
             em.close(); 
-       }
+        }
     }
 
 }

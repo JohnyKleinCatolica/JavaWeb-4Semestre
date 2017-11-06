@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% String nomeUsuario = (String) session.getAttribute("username");%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,7 +12,7 @@
         <link rel="stylesheet" href="assets/styles/style.css">
     </head>
     <body>
-        
+
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -18,15 +20,21 @@
                         <li role="presentation" class="active"><a href="main.jsp">Home</a></li>
                         <li role="presentation"><a href="ajaxCidades.html">Cidades</a></li>
                         <li role="presentation"><a href="helloWorld.jsp">Testes</a></li>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="cadastroCliente.jsp">Cadastrar Cliente</a></li>
-                                <li><a href="login.jsp">Logout</a></li>
-                            </ul>
-                     </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="#">
+                                    Olá, 
+                                    <%= nomeUsuario%>
+                                </a>  
+                            </li>
+                            <li><a href="login.jsp">Logout</a></li>
+
+                        </ul>
+                    </ul>
                 </div>
             </div>
         </div>
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

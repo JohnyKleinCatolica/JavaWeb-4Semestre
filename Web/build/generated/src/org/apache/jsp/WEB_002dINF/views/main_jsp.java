@@ -41,6 +41,9 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write('\n');
+ String nomeUsuario = (String) session.getAttribute("user"); 
+      out.write("\n");
       out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
@@ -62,7 +65,12 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <li role=\"presentation\"><a href=\"ajaxCidades.html\">Cidades</a></li>\n");
       out.write("                        <li role=\"presentation\"><a href=\"helloWorld.jsp\">Testes</a></li>\n");
       out.write("                            <ul class=\"nav navbar-nav navbar-right\">\n");
-      out.write("                                <li><a href=\"cadastroCliente.jsp\">Cadastrar Cliente</a></li>\n");
+      out.write("                                <li>\n");
+      out.write("                                    Olá, \n");
+      out.write("                                    ");
+      out.print( nomeUsuario );
+      out.write("\n");
+      out.write("                                </li>\n");
       out.write("                                <li><a href=\"login.jsp\">Logout</a></li>\n");
       out.write("                            </ul>\n");
       out.write("                     </ul>\n");
