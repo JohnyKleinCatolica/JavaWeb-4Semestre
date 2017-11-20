@@ -52,7 +52,7 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
                 HttpSession session = request.getSession(true);
                 session.setAttribute("userid", Long.toString(user.getId()));
                 session.setAttribute("username", user.getName());
-                request.getRequestDispatcher("WEB-INF/views/main.jsp").forward(request, response);
+                request.getRequestDispatcher("WEB-INF/Views/index.jsp").forward(request, response);
             } else {
                 request.setAttribute("msg", "A Senha informada é inválida ou seu usuário está bloqueado!");
                 request.getRequestDispatcher("login.jsp").forward(request, response);

@@ -4,11 +4,9 @@ JSP
 *S JSP
 *F
 + 0 main.jsp
-WEB-INF/views/main.jsp
+WEB-INF/Views/main.jsp
 *L
-1:44
-2:45,2
-3,23:47
-26:70,3
-27,14:73
+1,26:44
+27:70,3
+28,21:73
 *E

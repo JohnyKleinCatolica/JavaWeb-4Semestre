@@ -24,7 +24,7 @@
                     <ul class="nav nav-tabs">
                         <li role="presentation" class="active"><a href="main.jsp">Home</a></li>
                         <li role="presentation"><a href="ajaxCidades.html">Cidades</a></li>
-                        <li role="presentation"><a href="helloWorld.jsp">Testes</a></li>
+                        <li role="presentation"><a href="helloWorld">Testes</a></li>
                             <ul class="nav navbar-nav navbar-right">
 
                                 <li><a href="login.jsp">Logout</a></li>

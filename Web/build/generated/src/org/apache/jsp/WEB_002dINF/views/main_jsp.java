@@ -1,4 +1,4 @@
-package org.apache.jsp.WEB_002dINF.views;
+package org.apache.jsp.WEB_002dINF.Views;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -41,8 +41,7 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write('\n');
- String nomeUsuario = (String) session.getAttribute("user"); 
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("<!DOCTYPE html>\n");
@@ -56,7 +55,7 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <link rel=\"stylesheet\" href=\"assets/styles/style.css\">\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        \n");
+      out.write("\n");
       out.write("        <div class=\"container\">\n");
       out.write("            <div class=\"row\">\n");
       out.write("                <div class=\"col-xs-12\">\n");
@@ -64,20 +63,28 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <li role=\"presentation\" class=\"active\"><a href=\"main.jsp\">Home</a></li>\n");
       out.write("                        <li role=\"presentation\"><a href=\"ajaxCidades.html\">Cidades</a></li>\n");
       out.write("                        <li role=\"presentation\"><a href=\"helloWorld.jsp\">Testes</a></li>\n");
-      out.write("                            <ul class=\"nav navbar-nav navbar-right\">\n");
-      out.write("                                <li>\n");
+      out.write("                        <ul class=\"nav navbar-nav navbar-right\">\n");
+      out.write("                            <li>\n");
+      out.write("                                <a href=\"#\">\n");
       out.write("                                    Olá, \n");
-      out.write("                                    ");
-      out.print( nomeUsuario );
+      out.write("                                   ");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${username}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("\n");
-      out.write("                                </li>\n");
-      out.write("                                <li><a href=\"login.jsp\">Logout</a></li>\n");
-      out.write("                            </ul>\n");
-      out.write("                     </ul>\n");
+      out.write("                                </a>  \n");
+      out.write("                            </li>\n");
+      out.write("                            <li><a href=\"login.jsp\">Logout</a></li>\n");
+      out.write("\n");
+      out.write("                        </ul>\n");
+      out.write("                    </ul>\n");
       out.write("                </div>\n");
       out.write("            </div>\n");
+      out.write("            <div class=\"row\">\n");
+      out.write("                <div class=\"container\">\n");
+      out.write("                    <h1>Página Principal</h1>\n");
+      out.write("                </div>\n");
+      out.write("            </div>                    \n");
       out.write("        </div>\n");
-      out.write("        \n");
+      out.write("\n");
       out.write("        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\n");
       out.write("        <!-- Latest compiled and minified JavaScript -->\n");
       out.write("        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\" integrity=\"sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa\" crossorigin=\"anonymous\"></script>\n");
