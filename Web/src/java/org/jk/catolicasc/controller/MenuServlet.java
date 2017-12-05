@@ -6,22 +6,28 @@
 package org.jk.catolicasc.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.ftd.educational.catolica.prog4.daos.UserDAO;
+import org.ftd.educational.catolica.prog4.entities.User;
 
 /**
  *
  * @author johny.klein
  */
-@WebServlet(name = "MenuMain", urlPatterns = {"/MenuMain"}, initParams = {
+@WebServlet(name = "Menu", urlPatterns = {"/Menu"}, initParams = {
     @WebInitParam(name = "do", value = "")})
 
-public class MenuMainServlet extends HttpServlet {
-
+public class MenuServlet extends HttpServlet {
+    
     private static final long serialVersionUID = -1587237767624179860L;
 
     /**
@@ -42,23 +48,30 @@ public class MenuMainServlet extends HttpServlet {
         String nextAction;
 
         switch (action) {
-            case "lstmodel":
+            case "lstusers":
                 nextAction = listarUsers(request, response);
                 break;
             default:
-                request.setAttribute("msg", "Erro ao logar." + action);
+                request.setAttribute("msg", "Erro na controller: " + action);
                 nextAction = "login.jsp";
         }        
          request.getRequestDispatcher(nextAction).forward(request, response);
     }
     
     private String listarUsers (HttpServletRequest request, HttpServletResponse response) {
-        String nextAction = "/WEB-INF/views/UsersView.jsp";
+        String nextAction = "/WEB-INF/Views/listarUsers.jsp";
 
-        //request.setAttribute("userName", (String) request.getSession().getAttribute("username"));
+        String PERSISTENCE_UNIT_NAME = "persistenciaPU";
+        
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        UserDAO dao = new UserDAO(factory);
+        List<User> lst = dao.findUserEntities();
+        
+        request.setAttribute("users", lst);
         
         return nextAction;
-    }    
+    } 
+  
 
     private String readParameter(HttpServletRequest req, String parameterName) {
         return readParameter(req, parameterName, "");
@@ -71,5 +84,46 @@ public class MenuMainServlet extends HttpServlet {
         }
 
         return value;
+    }
+    
+     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
     }
 }

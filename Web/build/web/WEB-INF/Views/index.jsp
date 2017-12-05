@@ -18,13 +18,13 @@
                 <div class="col-xs-12">
                     <ul class="nav nav-tabs">
                         <li role="presentation" class="active"><a href="main.jsp">Home</a></li>
-                        <li role="presentation"><a href="ajaxCidades.html">Cidades</a></li>
+                        <li role="presentation"><a href="Menu?do=lstusers">Usuários</a></li>
                         <li role="presentation"><a href="helloWorld.jsp">Testes</a></li>
                         <ul class="nav navbar-nav navbar-right">
                             <li>
                                 <a href="#">
                                     Olá, 
-                                   ${username}
+                                    ${username}
                                 </a>  
                             </li>
                             <li><a href="login.jsp">Logout</a></li>
@@ -33,6 +33,7 @@
                     </ul>
                 </div>
             </div>
+            
             <div class="row">
                 <div class="container">
                     <h1>Página Principal</h1>
@@ -45,3 +46,5 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     </body>
 </html>
+
+
