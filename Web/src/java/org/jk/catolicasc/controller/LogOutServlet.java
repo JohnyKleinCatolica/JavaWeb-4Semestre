@@ -7,28 +7,19 @@ package org.jk.catolicasc.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.ftd.educational.catolica.prog4.daos.UserDAO;
-import org.ftd.educational.catolica.prog4.entities.User;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author johny.klein
  */
-@WebServlet(name = "Menu", urlPatterns = {"/Menu"}, initParams = {
-    @WebInitParam(name = "do", value = "")})
-
-public class MenuServlet extends HttpServlet {
-
-    private static final long serialVersionUID = -1587237767624179860L;
+@WebServlet(name = "LogOutServlet", urlPatterns = {"/logout"})
+public class LogOutServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,48 +35,14 @@ public class MenuServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        String action = this.readParameter(request, "do");
-        String nextAction;
-
-        switch (action) {
-            case "home":
-                nextAction = "/WEB-INF/Views/index.jsp";
-                break;
-            case "lstusers":
-                nextAction = listarUsers(request, response);
-                break;
-            default:
-                request.setAttribute("msg", "Erro na controller: " + action);
-                nextAction = "login.jsp";
+        HttpSession session = request.getSession(true);
+        if (session != null) {
+            session.removeAttribute("userid");
+            session.removeAttribute("username");
+            session.invalidate();
         }
-        request.getRequestDispatcher(nextAction).forward(request, response);
-    }
-
-    private String listarUsers(HttpServletRequest request, HttpServletResponse response) {
-        String nextAction = "/WEB-INF/Views/User/listarUsers.jsp";
-
-        String PERSISTENCE_UNIT_NAME = "persistenciaPU";
-
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-        UserDAO dao = new UserDAO(factory);
-        List<User> lst = dao.findUserEntities();
-
-        request.setAttribute("users", lst);
-
-        return nextAction;
-    }
-
-    private String readParameter(HttpServletRequest req, String parameterName) {
-        return readParameter(req, parameterName, "");
-    }
-
-    private String readParameter(HttpServletRequest req, String parameterName, String defaultValue) {
-        String value = req.getParameter(parameterName);
-        if ((value == null) || (value.equals(""))) {
-            value = defaultValue;
-        }
-
-        return value;
+        request.setAttribute("msg", "O Usuário solicitou sair!");
+        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -125,5 +82,6 @@ public class MenuServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }
+    }// </editor-fold>
+
 }

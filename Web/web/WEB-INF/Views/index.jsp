@@ -13,36 +13,15 @@
     </head>
     <body>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <ul class="nav nav-tabs">
-                        <li role="presentation" class="active"><a href="main.jsp">Home</a></li>
-                        <li role="presentation"><a href="Menu?do=lstusers">Usuários</a></li>
-                        <li role="presentation"><a href="helloWorld.jsp">Testes</a></li>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <a href="#">
-                                    Olá, 
-                                    ${username}
-                                </a>  
-                            </li>
-                            <li><a href="login.jsp">Logout</a></li>
-
-                        </ul>
-                    </ul>
-                </div>
+        <%@ include file="/WEB-INF/Views/menu.jsp" %>
+        
+        <div class="row"> <!-- Inicio Div Principal -->
+            <div class="container">
+                <h1>Página Principal</h1>
             </div>
-            
-            <div class="row">
-                <div class="container">
-                    <h1>Página Principal</h1>
-                </div>
-            </div>                    
-        </div>
+        </div> <!-- Fim Div Principal -->                    
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     </body>
 </html>

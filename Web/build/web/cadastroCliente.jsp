@@ -11,7 +11,7 @@
     </head>
     <body>         
         
-        <div class="container">
+        <div class="container"> <!-- Inicio Form Cadastrar -->
             <div class="row">
                 <div class="col-xs-12">
                     <div class="col-xs-12 col-md-8 col-md-offset-4">
@@ -23,8 +23,6 @@
                             <input  class="form-control" type="text" id="nameInput" name="nameInput">
                             <b>Id</b>: 
                             <input  class="form-control" type="text" id="idInput" name="idInput">
-                            <b>Data de Nascimento:</b> 
-                            <input  class="form-control" type="date" id="dtNascInput" name="dtNascInput">
                             <b>Email:</b> 
                             <input  class="form-control" type="email" id="loginInput" name="loginInput">
                             <b>Senha:</b> 
@@ -35,7 +33,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> <!-- Fim Form Editar -->
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Latest compiled and minified JavaScript -->

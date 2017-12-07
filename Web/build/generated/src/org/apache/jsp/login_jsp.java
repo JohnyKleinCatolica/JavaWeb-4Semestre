@@ -42,6 +42,8 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
       out.write("|\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
@@ -52,19 +54,8 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <link rel=\"stylesheet\" href=\"assets/styles/style.css\">\r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
-      out.write("        <div class=\"container\">\r\n");
-      out.write("            <div class=\"row\">\r\n");
-      out.write("                <div class=\"col-xs-12\">\r\n");
-      out.write("                    <ul class=\"nav nav-tabs\">\r\n");
-      out.write("                        <li role=\"presentation\"><a href=\"home.jsp\">Home</a></li>\r\n");
-      out.write("                        <li role=\"presentation\"><a href=\"ajaxCidades.html\">Cidades</a></li>\r\n");
-      out.write("                        <li role=\"presentation\"><a href=\"helloWorld.jsp\">Testes</a></li>\r\n");
-      out.write("                     </ul>\r\n");
-      out.write("                </div>\r\n");
-      out.write("            </div>\r\n");
-      out.write("        </div>\r\n");
       out.write("        \r\n");
-      out.write("        <div class=\"container\">\r\n");
+      out.write("        <div class=\"container\"> <!-- Inicio Form Login -->\r\n");
       out.write("            <div class=\"row\">\r\n");
       out.write("                <div class=\"col-xs-12\">\r\n");
       out.write("                    <div class=\"col-xs-12 col-md-7 col-md-offset-5\">\r\n");
@@ -82,10 +73,10 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </div>     \r\n");
       out.write("                </div>\r\n");
       out.write("                <div class=\"col-xs-12\">\r\n");
-      out.write("                     Não possui uma conta? Crie seu <a href=\"cadastroCliente.jsp\">cadastro</a>.\r\n");
+      out.write("                    Não possui uma conta? Crie seu <b><a href=\"cadastroCliente.jsp\">cadastro</a></b>.\r\n");
       out.write("                </div>                  \r\n");
       out.write("            </div>\r\n");
-      out.write("        </div>        \r\n");
+      out.write("        </div> <!-- Final Form Login -->     \r\n");
       out.write("        \r\n");
       out.write("        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\r\n");
       out.write("        <!-- Latest compiled and minified JavaScript -->\r\n");

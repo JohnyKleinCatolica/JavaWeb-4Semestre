@@ -1,4 +1,6 @@
 |<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,19 +11,8 @@
         <link rel="stylesheet" href="assets/styles/style.css">
     </head>
     <body>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <ul class="nav nav-tabs">
-                        <li role="presentation"><a href="home.jsp">Home</a></li>
-                        <li role="presentation"><a href="ajaxCidades.html">Cidades</a></li>
-                        <li role="presentation"><a href="helloWorld.jsp">Testes</a></li>
-                     </ul>
-                </div>
-            </div>
-        </div>
         
-        <div class="container">
+        <div class="container"> <!-- Inicio Form Login -->
             <div class="row">
                 <div class="col-xs-12">
                     <div class="col-xs-12 col-md-7 col-md-offset-5">
@@ -39,10 +30,10 @@
                     </div>     
                 </div>
                 <div class="col-xs-12">
-                     Não possui uma conta? Crie seu <a href="cadastroCliente.jsp">cadastro</a>.
+                    Não possui uma conta? Crie seu <b><a href="cadastroCliente.jsp">cadastro</a></b>.
                 </div>                  
             </div>
-        </div>        
+        </div> <!-- Final Form Login -->     
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Latest compiled and minified JavaScript -->

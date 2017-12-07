@@ -7,3 +7,23 @@ input, button{
 button{
     margin-top: 15px;
 }
+
+/* link que ainda não foi visitado */
+a:link {
+   color: gray;
+}
+
+/* link que foi visitado */
+a:visited {
+    color: black;
+}
+
+/* mouse over */
+a:hover {
+    color: #000000;
+}
+
+/* link selecionado */
+a:active {
+    color: gray;
+}

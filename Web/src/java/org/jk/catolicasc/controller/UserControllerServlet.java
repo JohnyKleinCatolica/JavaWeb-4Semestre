@@ -6,7 +6,6 @@
 package org.jk.catolicasc.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -23,10 +22,10 @@ import org.ftd.educational.catolica.prog4.entities.User;
  *
  * @author johny.klein
  */
-@WebServlet(name = "Menu", urlPatterns = {"/Menu"}, initParams = {
-    @WebInitParam(name = "do", value = "")})
-
-public class MenuServlet extends HttpServlet {
+@WebServlet(name = "UserControllerServletServlet", urlPatterns = {"/User"}, initParams
+        = {
+            @WebInitParam(name = "do", value = "")})
+public class UserControllerServlet extends HttpServlet {
 
     private static final long serialVersionUID = -1587237767624179860L;
 
@@ -41,38 +40,57 @@ public class MenuServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         String action = this.readParameter(request, "do");
         String nextAction;
-
         switch (action) {
-            case "home":
-                nextAction = "/WEB-INF/Views/index.jsp";
+            case "adcionar":
+                nextAction = adicionarUser(request, response);
                 break;
-            case "lstusers":
-                nextAction = listarUsers(request, response);
+            case "detalhes":
+                nextAction = detalhesUser(request, response);
+                break;
+            case "editar":
+                nextAction = editarUser(request, response);
+                break;
+            case "remover":
+                nextAction = removerUser(request, response);
                 break;
             default:
-                request.setAttribute("msg", "Erro na controller: " + action);
-                nextAction = "login.jsp";
+                request.setAttribute("msg", "Erro controller: recebi obscuro do=" + action);
+                nextAction = "signin.jsp";
         }
+
         request.getRequestDispatcher(nextAction).forward(request, response);
     }
 
-    private String listarUsers(HttpServletRequest request, HttpServletResponse response) {
-        String nextAction = "/WEB-INF/Views/User/listarUsers.jsp";
-
-        String PERSISTENCE_UNIT_NAME = "persistenciaPU";
-
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-        UserDAO dao = new UserDAO(factory);
-        List<User> lst = dao.findUserEntities();
-
-        request.setAttribute("users", lst);
+    private String adicionarUser(HttpServletRequest request, HttpServletResponse response) {
+        String nextAction = "/WEB-INF/views/AddUserView.jsp";
 
         return nextAction;
+    }
+
+    private String detalhesUser(HttpServletRequest request, HttpServletResponse response) {
+        String nextAction = "/WEB-INF/views/ReadUserView.jsp";
+        String id = this.readParameter(request, "id");
+
+        return nextAction;
+    }
+
+    private String editarUser(HttpServletRequest request, HttpServletResponse response) {
+        String nextAction = "/WEB-INF/Views/User/editarUser.jsp";
+        String id = this.readParameter(request, "id");
+        
+        return nextAction;
+    }
+
+    private String removerUser(HttpServletRequest request, HttpServletResponse response) {
+        String id = this.readParameter(request, "id");
+        String successNextAction = "user?do=lstmodel";
+        String failureNextAction = "user?do=readmodel&id=" + id;
+
+        return successNextAction;
     }
 
     private String readParameter(HttpServletRequest req, String parameterName) {
