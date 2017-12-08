@@ -5,8 +5,11 @@
  */
 package org.jk.catolicasc.controller;
 
+import com.mysql.jdbc.Util;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.ServletException;
@@ -28,6 +31,7 @@ import org.ftd.educational.catolica.prog4.entities.User;
 public class UserControllerServlet extends HttpServlet {
 
     private static final long serialVersionUID = -1587237767624179860L;
+    final String PERSISTENCE_UNIT_NAME = "persistenciaPU";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,11 +49,14 @@ public class UserControllerServlet extends HttpServlet {
         String action = this.readParameter(request, "do");
         String nextAction;
         switch (action) {
-            case "adcionar":
+            case "adicionar":
                 nextAction = adicionarUser(request, response);
                 break;
-            case "detalhes":
-                nextAction = detalhesUser(request, response);
+            case "buildAdicionar":
+                nextAction = buildAdicionarUser(request, response);
+                break;
+            case "buildEditar":
+                nextAction = buildEditarUser(request, response);
                 break;
             case "editar":
                 nextAction = editarUser(request, response);
@@ -65,12 +72,6 @@ public class UserControllerServlet extends HttpServlet {
         request.getRequestDispatcher(nextAction).forward(request, response);
     }
 
-    private String adicionarUser(HttpServletRequest request, HttpServletResponse response) {
-        String nextAction = "/WEB-INF/views/AddUserView.jsp";
-
-        return nextAction;
-    }
-
     private String detalhesUser(HttpServletRequest request, HttpServletResponse response) {
         String nextAction = "/WEB-INF/views/ReadUserView.jsp";
         String id = this.readParameter(request, "id");
@@ -78,19 +79,90 @@ public class UserControllerServlet extends HttpServlet {
         return nextAction;
     }
 
-    private String editarUser(HttpServletRequest request, HttpServletResponse response) {
+    private String buildEditarUser(HttpServletRequest request, HttpServletResponse response) {
         String nextAction = "/WEB-INF/Views/User/editarUser.jsp";
+
         String id = this.readParameter(request, "id");
-        
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        UserDAO dao = new UserDAO(factory);
+        User user = null;
+        user = dao.findUser(Long.parseLong(id));
+
+        request.setAttribute("user", user);
+
+        return nextAction;
+    }
+
+    private String editarUser(HttpServletRequest request, HttpServletResponse response) {
+        String nextAction = "Menu?do=lstusers";
+        String id = request.getParameter("id");
+
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        UserDAO dao = new UserDAO(factory);
+        User user = dao.findUser(Long.parseLong(id));
+
+        String nome = request.getParameter("name");
+        String login = request.getParameter("login");
+        String passwd = request.getParameter("pswrd");
+
+        if (nome != null && login != null && passwd != null && id != null) {
+            user.setLogin(login);
+            user.setName(nome);
+            user.setPasswd(passwd);
+            try {
+                dao.edit(user);
+            } catch (Exception ex) {
+                Logger.getLogger(UserControllerServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        request.setAttribute("user", user);
+
+        return nextAction;
+    }
+
+    private String buildAdicionarUser(HttpServletRequest request, HttpServletResponse response) {
+        String nextAction = "/WEB-INF/Views/User/AddUserView.jsp";
+
+        return nextAction;
+    }
+
+    private String adicionarUser(HttpServletRequest request, HttpServletResponse response) {
+        String nextAction = "Menu?do=lstusers";
+
+        String PERSISTENCE_UNIT_NAME = "persistenciaPU";
+
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        UserDAO dao = new UserDAO(factory);
+        User user = new User();
+
+        String nome = request.getParameter("name");
+        String login = request.getParameter("login");
+        String senha = request.getParameter("senha");
+        //user.setId(serialVersionUID);
+        user.setName(nome);
+        user.setLogin(login);
+        user.setPasswd(senha);
+
+        dao.create(user);
+
         return nextAction;
     }
 
     private String removerUser(HttpServletRequest request, HttpServletResponse response) {
-        String id = this.readParameter(request, "id");
-        String successNextAction = "user?do=lstmodel";
-        String failureNextAction = "user?do=readmodel&id=" + id;
+        String nextAction = "Menu?do=lstusers";
+        String id = request.getParameter("id");
 
-        return successNextAction;
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        UserDAO dao = new UserDAO(factory);
+
+        try {
+            dao.destroy(Long.parseLong(id));
+        } catch (Exception ex) {
+            Logger.getLogger(UserControllerServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return nextAction;
     }
 
     private String readParameter(HttpServletRequest req, String parameterName) {

@@ -5,10 +5,7 @@
         <group>
             <file>file:/C:/Users/johny.klein/Documents/GitHub/JavaWeb-4Semestre/Web/web/WEB-INF/Views/User/listarUsers.jsp</file>
             <file>file:/C:/Users/johny.klein/Documents/GitHub/JavaWeb-4Semestre/Web/src/java/org/jk/catolicasc/controller/UserControllerServlet.java</file>
-            <file>file:/C:/Users/johny.klein/Documents/GitHub/JavaWeb-4Semestre/Web/web/WEB-INF/Views/User/editarUser.jsp</file>
-            <file>file:/C:/Users/johny.klein/Documents/GitHub/JavaWeb-4Semestre/Web/web/WEB-INF/Views/menu.jsp</file>
-            <file>file:/C:/Users/johny.klein/Documents/GitHub/JavaWeb-4Semestre/Web/web/WEB-INF/Views/index.jsp</file>
-            <file>file:/C:/Users/johny.klein/Documents/GitHub/JavaWeb-4Semestre/Web/src/java/org/jk/catolicasc/controller/MenuServlet.java</file>
+            <file>file:/C:/Users/johny.klein/Documents/GitHub/JavaWeb-4Semestre/Web/web/WEB-INF/Views/User/AddUserView.jsp</file>
             <file>file:/C:/Users/johny.klein/Documents/GitHub/JavaWeb-4Semestre/Web/web/login.jsp</file>
         </group>
     </open-files>

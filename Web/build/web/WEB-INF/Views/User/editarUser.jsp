@@ -1,4 +1,4 @@
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -12,9 +12,9 @@
         <title>Edição de Cliente</title>
     </head>
     <body>         
-        
+
         <%@ include file="/WEB-INF/Views/menu.jsp" %>
-        
+
         <div class="container"> <!-- Inicio Form Editar -->
             <div class="row">
                 <div class="col-xs-12">
@@ -22,16 +22,16 @@
                         <h1>Edição do Cliente</h1>
                     </div>
                     <div class="col-xs-12">
-                        <form action="show">
-                            <b>Nome:</b> 
-                            <input  class="form-control" type="text" id="nameInput" name="nameInput">
-                            <b>Id</b>: 
-                            <input  class="form-control" type="text" id="idInput" name="idInput">
-                            <b>Email:</b> 
-                            <input  class="form-control" type="email" id="loginInput" name="loginInput">
-                            <b>Senha:</b> 
-                            <input class="form-control" type="password" id="pswrdSenha" name="pswrdSenha">  
-                            
+                        <form method="post" action="User?do=editar">
+                            <b>Alterar Nome:</b> 
+                            <input  class="form-control" type="text" id="name" name="name" required="required" value="${user.name}">
+                            <b>Alterar Login:</b> 
+                            <input  class="form-control" type="text" id="login" name="login" required="required" value="${user.login}">
+                            <b>Alterar Senha:</b> 
+                            <input class="form-control" type="text" id="pswrd" name="pswrd" value="${user.passwd}">  
+                            <input class="form-control hidden" type="text" id="id" name="id" value="${user.id}">  
+
+
                             <button type="reset" class="btn btn-default">Resetar</button>
                             <button type="submit" class="btn btn-primary">Enviar</button>
                         </form>
@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div> <!-- Fim Form Editar -->
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     </body>

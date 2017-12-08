@@ -1,3 +1,7 @@
+html{
+    overflow: hidden;
+}
+
 input, button{
     margin-top: 3px;
     margin-bottom: 3px;
@@ -27,3 +31,4 @@ a:hover {
 a:active {
     color: gray;
 }
+

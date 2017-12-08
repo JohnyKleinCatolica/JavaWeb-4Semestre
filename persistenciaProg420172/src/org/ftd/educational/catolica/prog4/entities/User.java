@@ -34,7 +34,7 @@ public class User implements Serializable {
     
     @Column(nullable = false, length = 45)
     private String passwd;
-
+    
     @Override
     public String toString() {
         return this.getId() + " - " + this.getName();

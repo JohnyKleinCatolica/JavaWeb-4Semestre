@@ -38,8 +38,8 @@
                                 <td class="col-xs-5">${o.name}</td>
                                 <td class="col-xs-5">${o.login}</td>
                                 <td class="col-xs-1">
-                                <td class="col-xs-6 glyphicon glyphicon-edit"><a href="User?do=editar">Editar</a></td>
-                                <td class="col-xs-6 glyphicon glyphicon-remove"><a href="">Remover</a></td>
+                                <td class="col-xs-6 glyphicon glyphicon-edit"><a href="User?do=buildEditar&id=${o.id}">Editar</a></td>
+                                <td class="col-xs-6 glyphicon glyphicon-remove"><a href="User?do=remover&id=${o.id}">Remover</a></td>
                                 </td>
                             </tr>
                         </c:forEach> 
@@ -47,6 +47,9 @@
                 </table>   
             </div>
         </div> <!-- Fim Lista de Users -->
+        
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <a href class="btn btn-default" href="User?do=buildAdicionar">Criar Usuário</a>
 
     <script type="text/javascript" src="assets/core/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="assets/core/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
