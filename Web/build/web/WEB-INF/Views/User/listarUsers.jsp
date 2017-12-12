@@ -49,7 +49,7 @@
         </div> <!-- Fim Lista de Users -->
         
         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-        <a href class="btn btn-default" href="User?do=buildAdicionar">Criar Usuário</a>
+        <a class="btn btn-default" href="User?do=buildAdicionar">Criar Usuário</a>
 
     <script type="text/javascript" src="assets/core/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="assets/core/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>

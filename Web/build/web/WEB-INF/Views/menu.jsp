@@ -19,6 +19,9 @@
                     <ul class="nav nav-tabs">
                         <li role="presentation"><a href="Menu?do=home">Home</a></li>
                         <li role="presentation"><a href="Menu?do=lstusers">Usuários</a></li>
+                        <li role="presentation"><a href="Menu?do=lstfornecedor">Fornecedores</a></li>
+                        <li role="presentation"><a href="Menu?do=lstclient">Clientes</a></li>
+                        <li role="presentation"><a href="Menu?do=lstprodutos">Produtos</a></li>
                         <!--class="active"-->
                         <ul class="nav navbar-nav navbar-right">
                             <li>
@@ -27,13 +30,24 @@
                                     ${username}
                                 </a>  
                             </li>
+                            <!--                                <li class="dropdown">
+                                                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                                    Conta
+                                                                    <span class="caret"></span>
+                                                                </button>-->
+
+                            <!--<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">-->
+                                <!--<li><a href="User?do=buildEditar&id=>Editar Conta</a></li>-->
+                            <!--<li role="separator" class="divider"></li>-->
                             <li><a href="logout" class="glyphicon glyphicon-log-out">Logout</a></li>
+                            <!--</ul>-->
+                            <!--</li>-->
                         </ul>
                     </ul>
                 </div>
             </div>
         </div>
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     </body>

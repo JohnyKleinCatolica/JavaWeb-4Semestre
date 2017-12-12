@@ -7,9 +7,9 @@
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">              
         <link rel="stylesheet" href="assets/styles/style.css">
-        <title>Cadastro Usuário</title>
+        <title>Cadastro Fornecedor</title>
     </head>
-    <body>         
+    <body>  
         
         <%@ include file="/WEB-INF/Views/menu.jsp" %>
         
@@ -17,17 +17,16 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="col-xs-12 col-md-8 col-md-offset-4">
-                        <h1>Cadastro de Usuário</h1>
+                        <h1>Cadastro de Fornecedor</h1>
                     </div>
                     <div class="col-xs-12">
-                        <form name="frmCadUser" method="POST" action="User?do=adicionar">
+                        <form name="frmCadFornecedor" method="POST" action="Fornecedor?do=adicionar">
                             <b>Nome:</b> 
-                            <input  class="form-control" type="text" id="name" name="name">
-                            <input  class="form-control hidden" type="text" id="id" name="id">
-                            <b>Login:</b> 
-                            <input  class="form-control" id="login" name="login">
-                            <b>Senha:</b> 
-                            <input class="form-control" type="password" id="senha" name="senha">  
+                            <input  class="form-control" type="text" id="nome" name="nome">
+                            <b>CNPJ:</b> 
+                            <input  class="form-control" id="cnpj" name="cnpj">
+                            <b>Idade:</b> 
+                            <input class="form-control" type="text" id="idade" name="idade">  
                             
                             <button type="reset" class="btn btn-default">Resetar</button>
                             <button type="submit" class="btn btn-primary">Enviar</button>

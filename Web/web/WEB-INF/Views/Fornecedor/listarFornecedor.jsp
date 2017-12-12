@@ -16,43 +16,45 @@
     </head>
 
     <body>
-     
+
         <%@ include file="/WEB-INF/Views/menu.jsp" %>
-        
-        <div class="row"> <!-- Inicio Lista de Users -->
+
+        <div class="row"> <!-- Inicio Lista de Fornecedores -->
             <div class="col-xs-8 col-xs-offset-2">
                 <table class="table table-hover table-striped">
                     <thead class="thead-inverse">
                         <tr>
                             <th class="col-xs-1">Id</th>
                             <th class="col-xs-5">Nome</th>
-                            <th class="col-xs-5">Login</th>
+                            <th class="col-xs-5">CNPJ</th>
+                            <th class="col-xs-5">Idade</th> 
                             <th class="col-xs-1 hidden">#</th>
 
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="o" items="${users}">
+                        <c:forEach var="o" items="${fornecedor}">
                             <tr>
                                 <td class="col-xs-1">${o.id}</td>
-                                <td class="col-xs-5">${o.name}</td>
-                                <td class="col-xs-5">${o.login}</td>
+                                <td class="col-xs-5">${o.nome}</td>
+                                <td class="col-xs-5">${o.cnpj}</td>
+                                <td class="col-xs-5">${o.idade}</td>
                                 <td class="col-xs-1">
-                                <td class="col-xs-6 glyphicon glyphicon-edit"><a href="User?do=buildEditar&id=${o.id}">Editar</a></td>
-                                <td class="col-xs-6 glyphicon glyphicon-remove"><a href="User?do=remover&id=${o.id}">Remover</a></td>
+                                <td class="col-xs-6 glyphicon glyphicon-edit"><a href="Fornecedor?do=buildEditar&id=${o.id}">Editar</a></td>
+                                <td class="col-xs-6 glyphicon glyphicon-remove"><a href="Fornecedor?do=remover&id=${o.id}">Remover</a></td>
                                 </td>
                             </tr>
                         </c:forEach> 
                     </tbody>
                 </table>   
             </div>
-        </div> <!-- Fim Lista de Users -->
-        
-        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-        <a class="btn btn-default" href="User?do=buildAdicionar">Criar Usuário</a>
+        </div> <!-- Fim Lista de Fornecedores -->
 
-    <script type="text/javascript" src="assets/core/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="assets/core/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
-</body>
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <a class="btn btn-default" href="Fornecedor?do=buildAdicionar">Criar Fornecedor</a>
+
+        <script type="text/javascript" src="assets/core/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="assets/core/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+    </body>
 </html>
 

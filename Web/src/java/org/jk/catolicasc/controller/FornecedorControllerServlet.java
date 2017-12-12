@@ -5,9 +5,11 @@
  */
 package org.jk.catolicasc.controller;
 
+import com.mysql.jdbc.Util;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.ServletException;
@@ -16,23 +18,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.ftd.educational.catolica.prog4.daos.ClientDAO;
 import org.ftd.educational.catolica.prog4.daos.FornecedorDAO;
-import org.ftd.educational.catolica.prog4.daos.UserDAO;
-import org.ftd.educational.catolica.prog4.entities.Client;
 import org.ftd.educational.catolica.prog4.entities.Fornecedor;
-import org.ftd.educational.catolica.prog4.entities.User;
 
 /**
  *
  * @author johny.klein
  */
-@WebServlet(name = "Menu", urlPatterns = {"/Menu"}, initParams = {
-    @WebInitParam(name = "do", value = "")})
-
-public class MenuServlet extends HttpServlet {
+@WebServlet(name = "FornecedorControllerServletServlet", urlPatterns = {"/Fornecedor"}, initParams
+        = {
+            @WebInitParam(name = "do", value = "")})
+public class FornecedorControllerServlet extends HttpServlet {
 
     private static final long serialVersionUID = -1587237767624179860L;
+    final String PERSISTENCE_UNIT_NAME = "persistenciaPU";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,70 +44,116 @@ public class MenuServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         String action = this.readParameter(request, "do");
         String nextAction;
-
         switch (action) {
-            case "home":
-                nextAction = "/WEB-INF/Views/index.jsp";
+            case "adicionar":
+                nextAction = adicionarFornecedor(request, response);
                 break;
-            case "lstusers":
-                nextAction = listarUsers(request, response);
+            case "buildAdicionar":
+                nextAction = buildAdicionarFornecedor(request, response);
                 break;
-            case "lstfornecedor":
-                nextAction = listarFornecedor(request, response);
+            case "buildEditar":
+                nextAction = buildEditarFornecedor(request, response);
                 break;
-            case "lstclient":
-                nextAction = listarClient(request, response);
+            case "editar":
+                nextAction = editarFornecedor(request, response);
+                break;
+            case "remover":
+                nextAction = removerFornecedor(request, response);
                 break;
             default:
-                request.setAttribute("msg", "Erro na controller: " + action);
-                nextAction = "login.jsp";
+                request.setAttribute("msg", "Erro controller: recebi obscuro do=" + action);
+                nextAction = "signin.jsp";
         }
+
         request.getRequestDispatcher(nextAction).forward(request, response);
     }
 
-    private String listarUsers(HttpServletRequest request, HttpServletResponse response) {
-        String nextAction = "/WEB-INF/Views/User/listarUsers.jsp";
+    private String buildEditarFornecedor(HttpServletRequest request, HttpServletResponse response) {
+        String nextAction = "/WEB-INF/Views/Fornecedor/editarFornecedor.jsp";
 
-        String PERSISTENCE_UNIT_NAME = "persistenciaPU";
-
+        String id = this.readParameter(request, "id");
         EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-        UserDAO dao = new UserDAO(factory);
-        List<User> lst = dao.findUserEntities();
+        FornecedorDAO dao = new FornecedorDAO(factory);
+        Fornecedor forn = null;
+        forn = dao.findFornecedor(Long.parseLong(id));
 
-        request.setAttribute("users", lst);
+        request.setAttribute("fornecedor", forn);
 
         return nextAction;
     }
 
-    private String listarFornecedor(HttpServletRequest request, HttpServletResponse response) {
-        String nextAction = "/WEB-INF/Views/Fornecedor/listarFornecedor.jsp";
+    private String editarFornecedor(HttpServletRequest request, HttpServletResponse response) {
+        String nextAction = "Menu?do=lstfornecedor";
+        String id = request.getParameter("id");
+
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        FornecedorDAO dao = new FornecedorDAO(factory);
+        Fornecedor forn = dao.findFornecedor(Long.parseLong(id));
+
+        String cnpj = request.getParameter("cnpj");
+        int idade = Integer.parseInt(request.getParameter("idade"));
+        String nome = request.getParameter("nome");
+
+        if (cnpj != null && idade != 0 && nome != null && id != null) {
+            forn.setIdade(idade);
+            forn.setNome(nome);
+            forn.setCnpj(cnpj);
+            try {
+                dao.edit(forn);
+            } catch (Exception ex) {
+                Logger.getLogger(FornecedorControllerServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        request.setAttribute("fornecedor", forn);
+
+        return nextAction;
+    }
+
+    private String buildAdicionarFornecedor(HttpServletRequest request, HttpServletResponse response) {
+        String nextAction = "/WEB-INF/Views/Fornecedor/AddFornecedorView.jsp";
+
+        return nextAction;
+    }
+
+    private String adicionarFornecedor(HttpServletRequest request, HttpServletResponse response) {
+        String nextAction = "Menu?do=lstfornecedor";
 
         String PERSISTENCE_UNIT_NAME = "persistenciaPU";
 
         EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
         FornecedorDAO dao = new FornecedorDAO(factory);
-        List<Fornecedor> lst = dao.findFornecedorEntities();
+        Fornecedor forn = new Fornecedor();
 
-        request.setAttribute("fornecedor", lst);
+        String cnpj = request.getParameter("cnpj");
+        int idade = Integer.parseInt(request.getParameter("idade"));
+        String nome = request.getParameter("nome");
+
+        forn.setCnpj(cnpj);
+        forn.setIdade(idade);
+        forn.setNome(nome);
+        
+        dao.create(forn);
 
         return nextAction;
     }
 
-    private String listarClient(HttpServletRequest request, HttpServletResponse response) {
-        String nextAction = "/WEB-INF/Views/Client/listarClient.jsp";
-
-        String PERSISTENCE_UNIT_NAME = "persistenciaPU";
+    private String removerFornecedor(HttpServletRequest request, HttpServletResponse response) {
+        String nextAction = "Menu?do=lstfornecedor";
+        String id = request.getParameter("id");
 
         EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-        ClientDAO dao = new ClientDAO(factory);
-        List<Client> lst = dao.findClientEntities();
+        FornecedorDAO dao = new FornecedorDAO(factory);
 
-        request.setAttribute("client", lst);
+        try {
+            dao.destroy(Long.parseLong(id));
+        } catch (Exception ex) {
+            Logger.getLogger(FornecedorControllerServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         return nextAction;
     }

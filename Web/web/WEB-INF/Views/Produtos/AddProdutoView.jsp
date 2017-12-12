@@ -7,9 +7,9 @@
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">              
         <link rel="stylesheet" href="assets/styles/style.css">
-        <title>Cadastro Usuário</title>
+        <title>Cadastro Produto</title>
     </head>
-    <body>         
+    <body>  
         
         <%@ include file="/WEB-INF/Views/menu.jsp" %>
         
@@ -17,17 +17,18 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="col-xs-12 col-md-8 col-md-offset-4">
-                        <h1>Cadastro de Usuário</h1>
+                        <h1>Cadastro de Produto</h1>
                     </div>
                     <div class="col-xs-12">
-                        <form name="frmCadUser" method="POST" action="User?do=adicionar">
+                        <form name="frmCadProduto" method="POST" action="Produto?do=adicionar">
                             <b>Nome:</b> 
-                            <input  class="form-control" type="text" id="name" name="name">
-                            <input  class="form-control hidden" type="text" id="id" name="id">
-                            <b>Login:</b> 
-                            <input  class="form-control" id="login" name="login">
-                            <b>Senha:</b> 
-                            <input class="form-control" type="password" id="senha" name="senha">  
+                            <input  class="form-control" type="text" id="nome" name="nome">
+                            <b>Preço:</b> 
+                            <input  class="form-control" id="preco" name="preco">
+                            <b>Cliente:</b> 
+                            <input class="form-control" type="text" id="cliente" name="cliente">  
+                            <b>Fornecedor:</b> 
+                            <input class="form-control" type="text" id="fornecedor" name="fornecedor">  
                             
                             <button type="reset" class="btn btn-default">Resetar</button>
                             <button type="submit" class="btn btn-primary">Enviar</button>

@@ -7,15 +7,17 @@
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">              
         <link rel="stylesheet" href="assets/styles/style.css">
-        <title>Cadastro Cliente</title>
+        <title>Cadastro Usuário</title>
     </head>
     <body>         
+        
+        <%@ include file="/WEB-INF/Views/menu.jsp" %>
         
         <div class="container"> <!-- Inicio Form Cadastrar -->
             <div class="row">
                 <div class="col-xs-12">
                     <div class="col-xs-12 col-md-8 col-md-offset-4">
-                        <h1>Cadastro de Cliente</h1>
+                        <h1>Cadastro de Usuário</h1>
                     </div>
                     <div class="col-xs-12">
                         <form name="frmCadUser" method="POST" action="User?do=adicionar">

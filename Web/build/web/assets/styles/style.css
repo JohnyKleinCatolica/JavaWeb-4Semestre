@@ -32,3 +32,6 @@ a:active {
     color: gray;
 }
 
+#dropdownMenu{
+    margin-bottom: 10px;
+}
