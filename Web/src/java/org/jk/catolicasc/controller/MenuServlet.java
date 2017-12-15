@@ -18,9 +18,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.ftd.educational.catolica.prog4.daos.ClientDAO;
 import org.ftd.educational.catolica.prog4.daos.FornecedorDAO;
+import org.ftd.educational.catolica.prog4.daos.ProdutoDAO;
 import org.ftd.educational.catolica.prog4.daos.UserDAO;
 import org.ftd.educational.catolica.prog4.entities.Client;
 import org.ftd.educational.catolica.prog4.entities.Fornecedor;
+import org.ftd.educational.catolica.prog4.entities.Produto;
 import org.ftd.educational.catolica.prog4.entities.User;
 
 /**
@@ -63,6 +65,9 @@ public class MenuServlet extends HttpServlet {
                 break;
             case "lstclient":
                 nextAction = listarClient(request, response);
+                break;
+            case "lstprodutos":
+                nextAction = listarProduto(request, response);
                 break;
             default:
                 request.setAttribute("msg", "Erro na controller: " + action);
@@ -109,6 +114,20 @@ public class MenuServlet extends HttpServlet {
         List<Client> lst = dao.findClientEntities();
 
         request.setAttribute("client", lst);
+
+        return nextAction;
+    }
+
+    private String listarProduto(HttpServletRequest request, HttpServletResponse response) {
+        String nextAction = "/WEB-INF/Views/Produtos/listarProduto.jsp";
+
+        String PERSISTENCE_UNIT_NAME = "persistenciaPU";
+
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        ProdutoDAO dao = new ProdutoDAO(factory);
+        List<Produto> lst = dao.findProdutoEntities();
+
+        request.setAttribute("produto", lst);
 
         return nextAction;
     }

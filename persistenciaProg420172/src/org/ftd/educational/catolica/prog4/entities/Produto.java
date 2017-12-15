@@ -112,7 +112,7 @@ public class Produto implements Serializable {
 
     @Override
     public String toString() {
-        return "org.ftd.educational.catolica.prog4.entities.Produto[ id=" + id + " ]";
+        return nome;
     }
 
 }

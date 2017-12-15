@@ -68,4 +68,11 @@ public class Client implements Serializable {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+    
+    
+
 }

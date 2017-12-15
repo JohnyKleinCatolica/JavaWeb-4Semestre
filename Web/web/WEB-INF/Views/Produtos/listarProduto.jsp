@@ -25,8 +25,8 @@
                     <thead class="thead-inverse">
                         <tr>
                             <th class="col-xs-1">Id</th>
-                            <th class="col-xs-5">Nome</th>
-                            <th class="col-xs-5">Preço</th>
+                            <th class="col-xs-2">Nome</th>
+                            <th class="col-xs-2">Preço</th>
                             <th class="col-xs-5">Cliente</th>
                             <th class="col-xs-5">Fornecedor</th>                            
                             <th class="col-xs-1 hidden">#</th>
@@ -37,12 +37,12 @@
                         <c:forEach var="o" items="${produto}">
                             <tr>
                                 <td class="col-xs-1">${o.id}</td>
-                                <td class="col-xs-5">${o.nome}</td>
-                                <td class="col-xs-5">${o.preco}</td>
+                                <td class="col-xs-2">${o.nome}</td>
+                                <td class="col-xs-2">R$ ${o.preco}</td>
                                 <td class="col-xs-5">${o.cliente}</td>
                                 <td class="col-xs-5">${o.fornecedor}</td>
                                 <td class="col-xs-1">
-                                <td class="col-xs-6 glyphicon glyphicon-edit"><a href="Produto?do=buildEditar&id=${o.id}">Editar</a></td>
+                                <td class="col-xs-6 glyphicon glyphicon-edit"><a href="Produto?do=buildEditar&idProd=${o.id}&idClient=${o.cliente.id}&idForn=${o.fornecedor.id}">Editar</a></td>
                                 <td class="col-xs-6 glyphicon glyphicon-remove"><a href="Produto?do=remover&id=${o.id}">Remover</a></td>
                                 </td>
                             </tr>
