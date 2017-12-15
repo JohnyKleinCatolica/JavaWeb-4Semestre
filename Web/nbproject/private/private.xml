@@ -3,9 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/johny.klein/Documents/GitHub/JavaWeb-4Semestre/Web/web/WEB-INF/Views/Produtos/listarProduto.jsp</file>
-            <file>file:/C:/Users/johny.klein/Documents/GitHub/JavaWeb-4Semestre/Web/src/java/org/jk/catolicasc/controller/ProdutoControllerServlet.java</file>
-            <file>file:/C:/Users/johny.klein/Documents/GitHub/JavaWeb-4Semestre/Web/web/WEB-INF/Views/Produtos/editarProduto.jsp</file>
+            <file>file:/C:/Users/johny.klein/Documents/GitHub/JavaWeb-4Semestre/Web/src/java/org/jk/catolicasc/filters/MainFilter.java</file>
             <file>file:/C:/Users/johny.klein/Documents/GitHub/JavaWeb-4Semestre/Web/src/java/org/jk/catolicasc/controller/MenuServlet.java</file>
             <file>file:/C:/Users/johny.klein/Documents/GitHub/JavaWeb-4Semestre/Web/web/login.jsp</file>
         </group>
